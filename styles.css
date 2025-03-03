@@ -1,0 +1,136 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0a0a0a;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    width: 350px;
+    border: 15px solid #a5545b;
+}
+.radar {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+    border: 4px solid limegreen;
+}
+
+.ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #0fdb64;
+}
+
+
+.ring:nth-child(1) {
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+}
+
+.ring:nth-child(2) {
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+}
+
+.ring:nth-child(3) {
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
+}
+
+
+
+.sweep-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 150%;
+    background-color: #0fdb64;
+    transform-origin: top;
+    animation: scan 5s linear infinite;
+}
+
+@keyframes scan {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0044;
+    border-radius: 50%;
+    /* animation: blink 3s infinite alternate; */
+}
+/* @keyframes blink {
+    from { opacity: 3; }
+    to { opacity: 0; }
+}
+@keyframes move {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(var(--x), var(--y)); }
+    75%  { transform: translate(var(--y), var(--x)); }
+    100% { transform: translate(0, 0); }
+} */
+
+.dot:nth-child(5) {
+    --angle: 0deg;  /* Angle */
+    --distance: 200px;  /* Distance from center */
+    left: calc(50% + var(--distance) * cos(var(--angle)));
+    top: calc(50% + var(--distance) * sin(var(--angle)));
+    --x: -20px; 
+    --y: -10px; 
+    animation: move 5s infinite alternate linear, blink 1.5s infinite alternate; 
+}
+
+.dot:nth-child(6) {
+    --angle: 90deg;  /* Angle */
+    --distance: 100px;  /* Distance from center */
+    left: calc(50% + var(--distance) * cos(var(--angle)));
+    top: calc(50% + var(--distance) * sin(var(--angle)));
+    --x: 25px; 
+    --y: 15px; 
+    animation: move 4s infinite alternate linear, blink 1.5s infinite alternate; 
+}
+
+.dot:nth-child(7) {
+    --angle: 180deg;  /* Angle */
+    --distance: 150px;  /* Distance from center */
+    left: calc(50% + var(--distance) * cos(var(--angle)));
+    top: calc(50% + var(--distance) * sin(var(--angle)));
+    --x: -10px; 
+    --y: -30px; 
+    animation: move 4s infinite alternate linear, blink 2.5s infinite alternate; 
+}
+
+.dot:nth-child(8) {
+    --angle: 270deg;  /* Angle */
+    --distance: 130px;  /* Distance from center */
+    left: calc(50% + var(--distance) * cos(var(--angle)));
+    top: calc(50% + var(--distance) * sin(var(--angle)));
+    --x: 15px; 
+    --y: 35px; 
+    animation: move 4s infinite alternate linear, blink 3.5s infinite alternate; 
+}
